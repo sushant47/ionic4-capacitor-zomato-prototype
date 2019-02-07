@@ -1,12 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Zomato Prototype
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <ion-card *ngFor="let restaurant of restaurantList">
+    <ion-card-content (click)="goToCollection(restaurant)">
+      <ion-item lines="none">{{restaurant.collection.title}}</ion-item>
+      <ion-item lines="none">{{restaurant.collection.description}}</ion-item>
+      <ion-img [src]="restaurant.collection.image_url"></ion-img>
+      <div class="myOverlay">
+        <div class="card-title">4.0</div>
+     </div>
+      <!-- <ion-item>{{restaurant.collection.share_url}}</ion-item> -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>

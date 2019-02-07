@@ -1,0 +1,6 @@
+{
+  "appId": "com.sushant.capacitor",
+  "appName": "capacitor-test",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
