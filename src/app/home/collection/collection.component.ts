@@ -21,11 +21,15 @@ export class CollectionComponent implements OnInit {
     this.collection = this.collectionService.getCollection();
     this.zomatoApiService.searchRestaurants(this.collection.cityId, this.collection.collection_id).subscribe((data: any) => {
       console.log(data.restaurants);
-      this.collectionList = data.restaurants;
+      this.collectionList = data;
     });
   }
   public getRestaurantDetails(collection: any) {
     console.log(collection);
+    this.zomatoApiService.getDetailedRestaurantInformation(collection.restaurant.R.res_id)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
   public goBack() {
     this.router.navigate(['/home']);

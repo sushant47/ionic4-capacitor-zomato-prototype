@@ -1,25 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Zomato Prototype
+      Zomato Collection
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-button size="small" (click)="goBack()">Back</ion-button>
+<ion-fab-button size="small">
+  <ion-icon name="arrow-round-back" (click)="goBack()"></ion-icon>
+</ion-fab-button>
 <ion-content padding>
-  <ion-fab-button size="small">Mini</ion-fab-button>
-  <ion-card *ngFor="let collection of collectionList">
-    <ion-card-content (click)="getRestaurantDetails(collection)">
-      <ion-img *ngIf="collection.restaurant.thumb; else default" [src]="collection.restaurant.thumb"></ion-img>
-      <ng-template #default>
-        <ion-img [src]="'https://i.ytimg.com/vi/kor6mPFmGBU/maxresdefault.jpg'"></ion-img>
-      </ng-template>
-      <ion-item lines="none"><strong>{{collection.restaurant.name}}</strong></ion-item>
-      <ion-item lines="none">{{collection.restaurant.location.locality | uppercase}}</ion-item>
-      <ion-item lines="none">{{collection.restaurant.cuisines}}</ion-item>
-      <div class="myOverlay" [style.background]="collection.restaurant.user_rating.rating_color">
-        <div class="card-title">{{collection.restaurant.user_rating.aggregate_rating}}</div>
-      </div>
-    </ion-card-content>
+  <ion-card *ngFor="let collection of collectionList['restaurants']">
+    <ion-img (click)="getRestaurantDetails(collection)" *ngIf="collection.restaurant.thumb; else default" [src]="collection.restaurant.thumb"></ion-img>
+    <ng-template #default>
+      <ion-img (click)="getRestaurantDetails(collection)" [src]="'https://i.ytimg.com/vi/kor6mPFmGBU/maxresdefault.jpg'"></ion-img>
+    </ng-template>
+    <div class="myOverlay">
+      <div class="card-title">{{collection.restaurant.user_rating.aggregate_rating}}</div>
+    </div>
+    <ion-item lines="none"><strong>{{collection.restaurant.name}}</strong></ion-item>
+    <ion-item lines="none">{{collection.restaurant.location.locality | uppercase}}</ion-item>
+    <ion-item lines="none">{{collection.restaurant.cuisines}}</ion-item>
+    <!-- <div class="myOverlay" [style.background]="collection.restaurant.user_rating.rating_color"> -->
   </ion-card>
 </ion-content>

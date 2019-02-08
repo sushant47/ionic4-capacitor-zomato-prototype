@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { CollectionComponent } from './collection/collection.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { CollectionListComponent } from './segments/collection-list/collection-list.component';
+import { RestaurantListComponent } from './segments/restaurant-list/restaurant-list.component';
 
 @NgModule({
   imports: [
@@ -24,6 +27,6 @@ import { CollectionComponent } from './collection/collection.component';
       }
     ])
   ],
-  declarations: [HomePage, CollectionComponent]
+  declarations: [HomePage, CollectionComponent, RestaurantComponent, CollectionListComponent, RestaurantListComponent]
 })
 export class HomePageModule { }

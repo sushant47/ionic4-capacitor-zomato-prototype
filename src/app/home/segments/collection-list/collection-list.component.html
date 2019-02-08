@@ -1,0 +1,8 @@
+<ion-card *ngFor="let collection of collectionList">
+  <ion-img [src]="collection.collection.image_url" (click)="goToCollection(collection)"></ion-img>
+  <div class="myOverlay">
+    <div class="card-title">4.0</div>
+  </div>
+  <ion-item lines="none">{{collection.collection.title}}</ion-item>
+  <ion-item lines="none">{{collection.collection.description}}</ion-item>
+</ion-card>

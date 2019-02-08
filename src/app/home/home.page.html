@@ -4,18 +4,16 @@
       Zomato Prototype
     </ion-title>
   </ion-toolbar>
+  <ion-segment>
+    <ion-segment-button checked (ionSelect)="getCurrentSegment('collections')">
+      <ion-label>Collections</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (ionSelect)="getCurrentSegment('restaurants')">
+      <ion-label>Restaurants</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
-
 <ion-content padding>
-  <ion-card *ngFor="let restaurant of restaurantList">
-    <ion-card-content (click)="goToCollection(restaurant)">
-      <ion-item lines="none">{{restaurant.collection.title}}</ion-item>
-      <ion-item lines="none">{{restaurant.collection.description}}</ion-item>
-      <ion-img [src]="restaurant.collection.image_url"></ion-img>
-      <div class="myOverlay">
-        <div class="card-title">4.0</div>
-     </div>
-      <!-- <ion-item>{{restaurant.collection.share_url}}</ion-item> -->
-    </ion-card-content>
-  </ion-card>
+  <app-collection-list *ngIf="selectedTab == 'collections'"></app-collection-list>
+  <app-restaurant-list *ngIf="selectedTab == 'restaurants'"></app-restaurant-list>
 </ion-content>

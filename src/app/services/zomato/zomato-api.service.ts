@@ -45,4 +45,16 @@ export class ZomatoApiService {
     entity_id=${entity_id}&entity_type=${entity_type}&collection_id=${collection_id}`;
     return this.http.get(`${url}`, { headers: headers });
   }
+  public getDetailedRestaurantInformation(res_id: number) {
+    const url = `https://developers.zomato.com/api/v2.1/restaurant?`;
+    let headers = new HttpHeaders();
+    headers = headers.append(USER_KEY[0], USER_KEY[1]);
+    return this.http.get(`${url}res_id=${res_id}`, { headers: headers });
+  }
+  public getNearByRestaurants(lat: string, lon: string) {
+    const url = `https://developers.zomato.com/api/v2.1/geocode?`;
+    let headers = new HttpHeaders();
+    headers = headers.append(USER_KEY[0], USER_KEY[1]);
+    return this.http.get(`${url}lat=${lat}&lon=${lon}`, { headers: headers });
+  }
 }

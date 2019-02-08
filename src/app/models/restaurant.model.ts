@@ -7,6 +7,6 @@ export interface RestaurantTypes {
     description: string;
     share_url: string;
 }
-export interface RestaurantList {
+export interface CollectionList {
     collection: RestaurantTypes;
 }
