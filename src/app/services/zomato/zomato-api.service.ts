@@ -57,4 +57,9 @@ export class ZomatoApiService {
     headers = headers.append(USER_KEY[0], USER_KEY[1]);
     return this.http.get(`${url}lat=${lat}&lon=${lon}`, { headers: headers });
   }
+  public getRestaurantDetails(res_id: number) {
+    let headers = new HttpHeaders();
+    headers = headers.append(USER_KEY[0], USER_KEY[1]);
+    return this.http.get(`https://developers.zomato.com/api/v2.1/dailymenu?res_id=${res_id}`, { headers: headers });
+  }
 }

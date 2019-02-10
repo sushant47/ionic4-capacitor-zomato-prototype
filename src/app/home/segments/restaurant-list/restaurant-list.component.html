@@ -1,7 +1,11 @@
 <ion-card *ngFor="let restaurant of restaurantList.nearby_restaurants">
-  <ion-img [src]="restaurant.thumb" (click)="goToRestaurant(restaurant)"></ion-img>
-  <ion-item lines="none">{{restaurant.name}}</ion-item>
-  <ion-item lines="none">{{restaurant.cuisines}}</ion-item>
-  <ion-item lines="none">{{restaurant.average_cost_for_two}}</ion-item>
+  <ion-img [src]="restaurant.restaurant.thumb" (click)="goToRestaurant(restaurant)"></ion-img>
+  <ion-item lines="none">
+    <ion-label item-left><strong>{{restaurant.restaurant.name}}</strong></ion-label>
+    <!-- <ion-label text-right><span [style.background]="'#' + restaurant.restaurant.user_rating.rating_color">{{restaurant.restaurant.user_rating.aggregate_rating}}</span></ion-label> -->
+    <ion-badge slot="end" mode="md" [style.background]="'#' + restaurant.restaurant.user_rating.rating_color">{{restaurant.restaurant.user_rating.aggregate_rating}}</ion-badge>
+  </ion-item>
+  <ion-item lines="none">{{restaurant.restaurant.cuisines}}</ion-item>
+  <ion-item lines="none">Cost for two {{restaurant.restaurant.average_cost_for_two}} {{restaurant.restaurant.currency}}</ion-item>
   <!-- <ion-item lines="none">{{restaurant.user_rating.aggregate_rating}}</ion-item> -->
 </ion-card>

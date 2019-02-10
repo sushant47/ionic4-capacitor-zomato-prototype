@@ -4,6 +4,7 @@ import { CollectionService } from 'src/app/services/collection.service';
 import { Router } from '@angular/router';
 import { LocationService } from 'src/app/services/location.service';
 import { CollectionList } from 'src/app/models/restaurant.model';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-collection-list',
@@ -15,11 +16,13 @@ export class CollectionListComponent implements OnInit {
   private lats: any;
   private long: any;
   private cityId: number;
+  loading: any;
 
   constructor(private zomatoApiService: ZomatoApiService,
     private collectionService: CollectionService,
     private router: Router,
-    private locationService: LocationService) {
+    private locationService: LocationService,
+    private loadingController: LoadingController) {
     this.getCurrentPosition();
   }
 
@@ -27,6 +30,7 @@ export class CollectionListComponent implements OnInit {
   }
 
   async getCurrentPosition() {
+    this.presentLoading();
     await this.locationService.getCurrentPosition().then((coordinates) => {
       console.log('Current', coordinates);
       this.getLocation(`${coordinates.coords.latitude}, ${coordinates.coords.longitude}`);
@@ -45,11 +49,20 @@ export class CollectionListComponent implements OnInit {
 
   public getCollections(city_id: number) {
     this.zomatoApiService.getCollections(city_id).subscribe((data: any) => {
+      this.loading.dismiss();
       console.log(data.collections);
       this.collectionList = data.collections;
     });
   }
-
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      spinner: null,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await this.loading.present();
+  }
   private getNearByRestaurants(lat: number, lon: number) {
     this.zomatoApiService.getNearByRestaurants(lat.toString(), lon.toString())
       .subscribe((data: any) => {

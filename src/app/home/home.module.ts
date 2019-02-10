@@ -24,6 +24,10 @@ import { RestaurantListComponent } from './segments/restaurant-list/restaurant-l
       {
         path: 'collection',
         component: CollectionComponent
+      },
+      {
+        path: 'restaurant',
+        component: RestaurantComponent
       }
     ])
   ],

@@ -5,10 +5,10 @@
     </ion-title>
   </ion-toolbar>
   <ion-segment>
-    <ion-segment-button checked (ionSelect)="getCurrentSegment('collections')">
+    <ion-segment-button (ionSelect)="getCurrentSegment('collections')">
       <ion-label>Collections</ion-label>
     </ion-segment-button>
-    <ion-segment-button (ionSelect)="getCurrentSegment('restaurants')">
+    <ion-segment-button checked (ionSelect)="getCurrentSegment('restaurants')">
       <ion-label>Restaurants</ion-label>
     </ion-segment-button>
   </ion-segment>

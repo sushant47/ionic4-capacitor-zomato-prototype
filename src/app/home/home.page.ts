@@ -15,7 +15,7 @@ const { Geolocation } = Plugins;
 })
 export class HomePage {
   public collectionList: CollectionList[] = [];
-  public selectedTab: String = 'collections';
+  public selectedTab: String = 'restaurants';
   private lats: any;
   private long: any;
   private cityId: number;
@@ -26,7 +26,7 @@ export class HomePage {
     private collectionService: CollectionService,
     private locationService: LocationService) {
     // this.getCurrentPosition('collections');
-    this.getCurrentSegment('collections');
+    this.getCurrentSegment('restaurants');
   }
   public getCurrentSegment(segmentName: string) {
     this.selectedTab = segmentName;

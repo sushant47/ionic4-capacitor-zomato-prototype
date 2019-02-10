@@ -9,14 +9,9 @@ export class LocationService {
   constructor() { }
 
   public async getCurrentPosition() {
-    return await Geolocation.getCurrentPosition().then((coordinates) => {
+    return await Geolocation.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 60000 }).then((coordinates) => {
       console.log('Current', coordinates);
       return coordinates;
-      // segmentName === 'collections' ?
-      //   this.getLocation(`${coordinates.coords.latitude}, ${coordinates.coords.longitude}`)
-      //   : this.getNearByRestaurants(this.lats, this.long);
-      // this.lats = coordinates.coords.latitude;
-      // this.long = coordinates.coords.longitude;
     }).catch(
       (err) => {
         console.error('Could not read current location', err);
